@@ -1,10 +1,4 @@
-# node-multithreading-toolkit
-Node.js multithreading toolkit
-
-
-# node-multithreading-toolkit
-
-## Multithreading toolkit
+# Multithreading toolkit
 
 ### Install:
 ```bash
