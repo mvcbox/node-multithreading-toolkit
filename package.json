@@ -1,6 +1,6 @@
 {
   "name": "multithreading-toolkit",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Node.js multithreading toolkit",
   "main": "index.js",
   "scripts": {

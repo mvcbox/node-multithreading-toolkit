@@ -2,7 +2,6 @@
 
 module.exports = `'use strict';
 
-const vm = require('vm');
 const {
     parentPort,
     isMainThread,
@@ -34,6 +33,7 @@ parentPort.on('message', async function (args) {
 });
 
 function srcToFunction(source) {
-    source = \`((exports, require, module, __filename, __dirname)=>{return \$\{source\}\\n});\`;
-    return (new vm.Script(source)).runInThisContext()(exports, require, module, __filename, __dirname);
+    let _function;
+    eval('_function = ' + source);
+    return _function;
 }`;
