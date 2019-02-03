@@ -1,0 +1,29 @@
+{
+  "name": "multithreading-toolkit",
+  "version": "1.0.0",
+  "description": "Node.js multithreading toolkit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mvcbox/node-multithreading-toolkit.git"
+  },
+  "keywords": [
+    "Node.js",
+    "multithreading",
+    "toolkit"
+  ],
+  "author": "mvcbox.org@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mvcbox/node-multithreading-toolkit/issues"
+  },
+  "homepage": "https://github.com/mvcbox/node-multithreading-toolkit#readme",
+  "dependencies": {
+    "compare-versions": "^3.4.0",
+    "generic-pool": "^3.5.0",
+    "merge": "^1.2.1"
+  }
+}
