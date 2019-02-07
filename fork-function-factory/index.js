@@ -7,9 +7,9 @@ const fakePoolFactory = require('./fake-pool-factory');
 const objectValues = require('../utils/index').objectValues;
 
 /**
- * @param {string} source
+ * @param {string|Function} source
  * @param {Object} options
- * @param {number} options.eval
+ * @param {boolean} options.eval
  * @param {number} options.returnTimeout
  * @param {boolean} options.pool
  * @param {Object} options.poolOptions

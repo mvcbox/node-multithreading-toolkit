@@ -6,9 +6,9 @@ const poolFactory = require('./pool-factory');
 const fakePoolFactory = require('./fake-pool-factory');
 
 /**
- * @param {string} source
+ * @param {string|Function} source
  * @param {Object} options
- * @param {number} options.eval
+ * @param {boolean} options.eval
  * @param {number} options.returnTimeout
  * @param {Array} options.execArgv
  * @param {boolean} options.pool
