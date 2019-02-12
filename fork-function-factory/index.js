@@ -4,7 +4,6 @@ const os = require('os');
 const merge = require('merge');
 const poolFactory = require('./pool-factory');
 const fakePoolFactory = require('./fake-pool-factory');
-const objectValues = require('../utils/index').objectValues;
 
 /**
  * @param {string|Function} source
@@ -37,16 +36,14 @@ module.exports = function (source, options) {
 
     const pool = _function.pool = options.pool ? poolFactory(source, options.poolOptions, options.forkOptions) : fakePoolFactory(source, options.forkOptions);
 
-    function _function() {
-        const _arguments = arguments;
-
+    function _function(args, _options) {
         return pool.acquire().then(function (thread) {
             return new Promise(function (resolve, reject) {
                 const timeoutId = setTimeout(function () {
                     thread.removeAllListeners();
                     pool.destroy(thread);
                     reject(new Error('Return timeout'));
-                }, options.returnTimeout);
+                }, _options && _options.returnTimeout || options.returnTimeout);
 
                 thread.on('error', function (err) {
                     clearTimeout(timeoutId);
@@ -64,7 +61,7 @@ module.exports = function (source, options) {
 
                 thread.send({
                     type: 'execute',
-                    args: objectValues(_arguments)
+                    args: args
                 });
 
                 thread.on('message', function (data) {

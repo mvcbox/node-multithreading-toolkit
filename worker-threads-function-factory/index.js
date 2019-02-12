@@ -38,7 +38,7 @@ module.exports = function (source, options) {
     };
     const pool = _function.pool = options.pool ? poolFactory(options.poolOptions, workerOptions) : fakePoolFactory(workerOptions);
 
-    async function _function(...args) {
+    async function _function(args, _options) {
         const worker = await pool.acquire();
 
         return new Promise(function(resolve, reject) {
@@ -46,7 +46,7 @@ module.exports = function (source, options) {
                 worker.removeAllListeners();
                 pool.destroy(worker);
                 reject(new Error('Return timeout'));
-            }, options.returnTimeout);
+            }, _options && _options.returnTimeout || options.returnTimeout);
 
             worker.on('error', function (err) {
                 clearTimeout(timeoutId);

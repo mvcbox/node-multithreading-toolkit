@@ -21,6 +21,7 @@ npm install multithreading-toolkit --save
 ```js
 'use strict';
 
+const myReturnTimeout = 1000000;
 const { workerThreadsFunction } = require('multithreading-toolkit');
 
 const someFunction = workerThreadsFunction(function (arg1, arg2, arg3) {
@@ -31,7 +32,8 @@ const someFunction = workerThreadsFunction(function (arg1, arg2, arg3) {
     eval: true
 });
 
-someFunction(1, 2, 3).then(console.log).catch(console.error);
+// Call the function, passing in an array of arguments
+someFunction([1, 2, 3], {returnTimeout: myReturnTimeout}).then(console.log).catch(console.error);
 
 ```
 
@@ -51,6 +53,7 @@ someFunction(1, 2, 3).then(console.log).catch(console.error);
 ```js
 'use strict';
 
+const myReturnTimeout = 1000000;
 const { forkFunction } = require('multithreading-toolkit');
 
 const someFunction = forkFunction(function (arg1, arg2, arg3) {
@@ -61,6 +64,7 @@ const someFunction = forkFunction(function (arg1, arg2, arg3) {
     eval: true
 });
 
-someFunction(1, 2, 3).then(console.log).catch(console.error);
+// Call the function, passing in an array of arguments
+someFunction([1, 2, 3], {returnTimeout: myReturnTimeout}).then(console.log).catch(console.error);
 
 ```
